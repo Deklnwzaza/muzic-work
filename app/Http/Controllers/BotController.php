@@ -31,10 +31,11 @@ class BotController extends Controller
                                  '.$image.'',
                         ];
 
-                        $messages2 = [
-                            'type' => 'image',
-                            'image' => $this->base64_to_jpeg($image),
-                        ];
+//                        $messages2 = [
+//                            'type'=> 'image',
+//                            'originalContentUrl'=> 'https://example.com/original.jpg',
+//                            'previewImageUrl'=> 'https://example.com/preview.jpg'
+//                        ];
 
 
 
@@ -42,7 +43,7 @@ class BotController extends Controller
                             'replyToken' => $replyToken,
                             'messages' =>[
                                 $messages1,
-                                $messages2,
+                              //  $messages2,
                                 ]
                         ];
                     }
