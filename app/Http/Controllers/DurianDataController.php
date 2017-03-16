@@ -21,6 +21,5 @@ class DurianDataController extends Controller
         ];
 
         DurianData::create($arrData);
-        return $this->index();
     }
 }

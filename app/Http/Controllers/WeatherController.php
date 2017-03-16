@@ -28,7 +28,6 @@ class WeatherController extends Controller
         ];
 
         Weather::create($arrData);
-        return $this->index();
     }
 
     public function curlGetRequest($url)
