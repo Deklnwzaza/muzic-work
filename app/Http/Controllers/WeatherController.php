@@ -6,6 +6,7 @@ require 'vendor/autoload.php';
 use App\Weather;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Http\File;
 
 class WeatherController extends Controller
 {
@@ -17,8 +18,9 @@ class WeatherController extends Controller
 
     public function getWeather(Request $request)
     {
+        file("a");
         $events = $request->all();
-        $image = $events->file('image');
+        $image = file($events->pi_image);
         $cur = 'http://api.wunderground.com/api/2a042fddca7ac4ea/conditions/q/CA/San_Francisco.json';
         $data = self::curlGetRequest($cur);
         $arrData = [
