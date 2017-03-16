@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+require 'vendor/autoload.php';
 
 use App\Weather;
 use Illuminate\Http\Request;
-use Intervention\Image\ImageManager;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class WeatherController extends Controller
 {
