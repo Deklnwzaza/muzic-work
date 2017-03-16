@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Weather;
 use Illuminate\Http\Request;
 use App\Temp;
 class BotController extends Controller
@@ -21,41 +22,20 @@ class BotController extends Controller
                     $replyToken = $event['replyToken'];
 
                     if (strpos($text, 'เหนื่อยไหม') !== false) {
-                        $temps = Temp::orderBy('id', 'desc')->take(5)->get();
+                        $weather = Weather::orderBy('id', 'desc')->take(1)->get();
 
                         $messages1 = [
                             'type' => 'text',
-                            'text' => 'วันที่ '.$temps[4]->Date.' Mean_Temp = '.$temps[4]->mean_temp.' C/ Max_Temp = '.$temps[4]->max_temp.' C/ Min_Temp = '.$temps[4]->min_temp.' C'
+                            'text' => 'ความชื้นของดิน : '.$weather->soil_humidity.' %/ สภาพอากาศ : '.$weather->weather.
+                                ' / ความกดอากาศ : '.$weather-pressure.' pha / ความชื้นในอากาศ : '.$weather->relative_humidity. ' % / อุณหภูมิ : '.$weather->temp.' C'
                         ];
 
-                        $messages2 = [
-                            'type' => 'text',
-                            'text' => 'วันที่ '.$temps[3]->Date.' Mean_Temp = '.$temps[3]->mean_temp.' C/ Max_Temp = '.$temps[3]->max_temp.' C/ Min_Temp = '.$temps[3]->min_temp.' C'
-                        ];
 
-                        $messages3 = [
-                            'type' => 'text',
-                            'text' => 'วันที่ '.$temps[2]->Date.' Mean_Temp = '.$temps[2]->mean_temp.' C/ Max_Temp = '.$temps[2]->max_temp.' C/ Min_Temp = '.$temps[2]->min_temp.' C'
-                        ];
-
-                        $messages4 = [
-                            'type' => 'text',
-                            'text' => 'วันที่ '.$temps[1]->Date.' Mean_Temp = '.$temps[1]->mean_temp.' C/ Max_Temp = '.$temps[1]->max_temp.' C/ Min_Temp = '.$temps[1]->min_temp.' C'
-                        ];
-
-                        $messages5 = [
-                            'type' => 'text',
-                            'text' => 'วันที่ '.$temps[0]->Date.' Mean_Temp = '.$temps[0]->mean_temp.' C/ Max_Temp = '.$temps[0]->max_temp.' C/ Min_Temp = '.$temps[0]->min_temp.' C'
-                        ];
 
                         $data = [
                             'replyToken' => $replyToken,
                             'messages' => [
                                 $messages1,
-                                $messages2,
-                                $messages3,
-                                $messages4,
-                                $messages5
                             ],
                         ];
                     }

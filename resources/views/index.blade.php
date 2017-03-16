@@ -15,19 +15,23 @@
 <table class="table table-bordered" style="margin-top: 10%; width: 80%">
     <thead>
     <tr>
-        <th>Date</th>
-        <th>Mean_Temp </th>
-        <th>Max_Temp</th>
-        <th>Min_Temp</th>
+        <th>temp</th>
+        <th>weather</th>
+        <th>pressure </th>
+        <th>relative_humidity</th>
+        <th>soil_humidity</th>
+        <th>image</th>
     </tr>
     </thead>
     <tbody>
     @foreach($weathers as $weather)
         <tr>
-            <td>{!! $weather->id !!}</td>
             <td>{!! $weather->temp !!} C</td>
+            <td>{!! $weather->weather !!} C</td>
             <td>{!! $weather->pressure !!} C</td>
             <td>{!! $weather->relative_humidity !!} C</td>
+            <td>{!! $weather->soil_humidity !!} C</td>
+            <td>{!! $weather->image !!} C</td>
         </tr>
 
     @endforeach
