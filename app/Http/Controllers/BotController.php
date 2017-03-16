@@ -27,15 +27,9 @@ class BotController extends Controller
                         $messages1 = [
                             'type' => 'text',
                             'text' => 'ความชื้นของดิน : '.$weathers->soil_humidity.' %/ สภาพอากาศ : '.$weathers->weather.
-                                ' / ความกดอากาศ : '.$weathers->pressure.' pha / ความชื้นในอากาศ : '.$weathers->relative_humidity.' % / อุณหภูมิ : '.$weathers->temp.' C /
-                                 '.$image.'',
+                                ' / ความกดอากาศ : '.$weathers->pressure.' pha / ความชื้นในอากาศ : '.$weathers->relative_humidity.' % / อุณหภูมิ : '.$weathers->temp.' C /',
                         ];
 
-//                        $messages2 = [
-//                            'type'=> 'image',
-//                            'originalContentUrl'=> 'https://example.com/original.jpg',
-//                            'previewImageUrl'=> 'https://example.com/preview.jpg'
-//                        ];
 
 
 
@@ -43,7 +37,6 @@ class BotController extends Controller
                             'replyToken' => $replyToken,
                             'messages' =>[
                                 $messages1,
-                              //  $messages2,
                                 ]
                         ];
                     }
