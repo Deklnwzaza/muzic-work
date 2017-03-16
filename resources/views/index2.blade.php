@@ -23,7 +23,7 @@
         @foreach($durians as $durian)
             <tr>
                 <td>{!! $durian->num !!} </td>
-                <td>{!! base64_decode($durian->image)!!} </td>
+                <td>{!! $durian->image !!} </td>
             </tr>
 
         @endforeach

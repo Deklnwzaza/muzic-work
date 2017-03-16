@@ -31,7 +31,7 @@
             <td>{!! $weather->pressure !!} </td>
             <td>{!! $weather->relative_humidity !!} </td>
             <td>{!! $weather->soil_humidity !!} %</td>
-            <td>{!! $weather->image !!} </td>
+            <td>{!! base64_decode($weather->image) !!} </td>
         </tr>
 
     @endforeach
