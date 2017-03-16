@@ -22,6 +22,7 @@ class BotController extends Controller
                     if (strpos($text, 'เหนื่อยไหม') !== false) {
                         $weathers = Weather::orderBy('id', 'desc')->first();
                         $image = $weathers['image'];
+                        header("Content-type: image/gif");
                         $imageDecode = base64_decode($image);
                         $imageResize = $this->resize_image($imageDecode, 1024, 1024);
                         $imageResize2 = $this->resize_image($imageDecode, 240, 240);
