@@ -23,11 +23,17 @@ class BotController extends Controller
 
                     if (strpos($text, 'เหนื่อยไหม') !== false) {
                         $weathers = Weather::orderBy('id', 'desc')->first();
-
+                        $image = $weathers['image'];
                         $messages1 = [
                             'type' => 'text',
                             'text' => 'ความชื้นของดิน : '.$weathers->soil_humidity.' %/ สภาพอากาศ : '.$weathers->weather.
-                                ' / ความกดอากาศ : '.$weathers->pressure.' pha / ความชื้นในอากาศ : '.$weathers->relative_humidity.' % / อุณหภูมิ : '.$weathers->temp.' C',
+                                ' / ความกดอากาศ : '.$weathers->pressure.' pha / ความชื้นในอากาศ : '.$weathers->relative_humidity.' % / อุณหภูมิ : '.$weathers->temp.' C /
+                                 '.$image.'',
+                        ];
+
+                        $messages2 = [
+                            'type' => 'image',
+                            'image' => $this->base64_to_jpeg($image),
                         ];
 
 
@@ -36,6 +42,7 @@ class BotController extends Controller
                             'replyToken' => $replyToken,
                             'messages' =>[
                                 $messages1,
+                                $messages2,
                                 ]
                         ];
                     }
@@ -108,5 +115,19 @@ class BotController extends Controller
         $response = curl_exec($curl);
         //$data = json_decode($response, true);
         curl_close($curl);
+    }
+
+
+    function base64_to_jpeg($base64_string, $output_file) {
+        $ifp = fopen($output_file, "rb");
+
+        $weathers = Weather::orderBy('id', 'desc')->first();
+
+        $data = explode(',',$base64_string);
+
+        fwrite($ifp, base64_decode($data[1]));
+        fclose($ifp);
+
+        return $output_file;
     }
 }
