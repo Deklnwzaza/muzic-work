@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Weather;
 use Illuminate\Http\Request;
 use App\Temp;
+use Intervention\Image\ImageManager;
+
+require 'vendor/autoload.php';
 class BotController extends Controller
 {
 
@@ -23,13 +26,20 @@ class BotController extends Controller
 
                     if (strpos($text, 'เหนื่อยไหม') !== false) {
                         $weathers = Weather::orderBy('id', 'desc')->first();
-                        $image = $weathers['image'];
+                        $image_path = $weathers['image'];
+                        $manager = new ImageManager(array('driver' => 'imagick'));
+                        $image1k = $manager->make($image_path)->resize(1024, 1024);
+                        $image200 = $manager->make($image_path)->resize(240, 240);
                         $messages1 = [
                             'type' => 'text',
                             'text' => 'ความชื้นของดิน : '.$weathers->soil_humidity.' %/ สภาพอากาศ : '.$weathers->weather.
                                 ' / ความกดอากาศ : '.$weathers->pressure.' pha / ความชื้นในอากาศ : '.$weathers->relative_humidity.' % / อุณหภูมิ : '.$weathers->temp.' C /',
                         ];
-
+                        $image1 = [
+                            'type' => 'image',
+                            'originalContentUrl'=> $image1k,
+                            'previewImageUrl' => $image200,
+                        ];
 
 
 
@@ -37,6 +47,7 @@ class BotController extends Controller
                             'replyToken' => $replyToken,
                             'messages' =>[
                                 $messages1,
+                                $image1
                             ]
                         ];
                     }
