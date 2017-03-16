@@ -18,9 +18,8 @@ class WeatherController extends Controller
 
     public function getWeather(Request $request)
     {
-        file("a");
         $events = $request->all();
-        $image = file($events->pi_image);
+       // $image = file($events->pi_image);
         $cur = 'http://api.wunderground.com/api/2a042fddca7ac4ea/conditions/q/CA/San_Francisco.json';
         $data = self::curlGetRequest($cur);
         $arrData = [
@@ -29,7 +28,7 @@ class WeatherController extends Controller
             'pressure' => $data['current_observation']['pressure_mb'],
             'relative_humidity' => $data['current_observation']['relative_humidity'],
             'soil_humidity' => $request['soil_humidity'],
-            'pi_image' => File::get($image)
+            //'pi_image' => File::get($image)
         ];
         Weather::create($arrData);
         return response()->json(['msg' => 'post complete']);
