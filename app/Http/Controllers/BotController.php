@@ -26,7 +26,8 @@ class BotController extends Controller
 
                         $messages1 = [
                             'type' => 'text',
-                            'text' =>  '...'
+                            'text' => 'ความชื้นของดิน : '.$weather->soil_humidity.' %/ สภาพอากาศ : '.$weather->weather.
+                                ' / ความกดอากาศ : '.$weather->pressure.' pha / ความชื้นในอากาศ : '.$weather->relative_humidity. ' % / อุณหภูมิ : '.$weather->temp.' C'
                         ];
 
 
