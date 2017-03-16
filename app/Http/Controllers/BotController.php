@@ -22,7 +22,7 @@ class BotController extends Controller
                     if (strpos($text, 'เหนื่อยไหม') !== false) {
                         $weathers = Weather::orderBy('id', 'desc')->first();
                         $image = $weathers['image'];
-                        $imageDecode = $this->base64_to_jpeg($image);
+                        $imageDecode = base64_decode($image);
                         $imageResize = $this->resize_image($imageDecode, 1024, 1024);
                         $imageResize2 = $this->resize_image($imageDecode, 240, 240);
                         $messages1 = [
@@ -120,8 +120,6 @@ class BotController extends Controller
 
     public function base64_to_jpeg($base64_string, $output_file) {
         $ifp = fopen($output_file, "rb");
-
-        $weathers = Weather::orderBy('id', 'desc')->first();
 
         $data = explode(',',$base64_string);
 
