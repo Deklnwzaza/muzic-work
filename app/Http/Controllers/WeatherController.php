@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Weather;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\File;
 
 class WeatherController extends Controller
 {
