@@ -24,9 +24,9 @@ class CreateWeatherTable extends Migration
             $table->timestamps();
         });
         $sql = 'ALTER TABLE weathers ADD pi_image MEDIUMBLOB';
-        DB::connection()->getPdo->exec($sql);
+        DB::connection()->PDO->exec($sql);
         $sql2 = 'ALTER TABLE weathers ADD matlab_image MEDIUMBLOB IS NULL';
-        DB::connection()->getPdo->exec($sql2);
+        DB::connection()->PDO->exec($sql2);
 
     }
 
