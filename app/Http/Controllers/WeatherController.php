@@ -27,7 +27,7 @@ class WeatherController extends Controller
             'pressure' => $data['current_observation']['pressure_mb'],
             'relative_humidity' => $data['current_observation']['relative_humidity'],
             'soil_humidity' => $request['soil_humidity'],
-            'image' => File::get($image)
+            'pi_image' => File::get($image)
         ];
         Weather::create($arrData);
         return response()->json(['msg' => 'post complete']);
