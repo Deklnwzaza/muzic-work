@@ -21,12 +21,10 @@ class CreateWeatherTable extends Migration
             $table->float('pressure');
             $table->string('relative_humidity');
             $table->string('soil_humidity');
+            $table->longText('pi_image');
+            $table->longText('matlab_image');
             $table->timestamps();
         });
-        $sql = 'ALTER TABLE weathers ADD pi_image LONGTEXT';
-        DB::connection()->getPdo()->exec($sql);
-        $sql2 = 'ALTER TABLE weathers ADD matlab_image LONGTEXT IS NULL';
-        DB::connection()->getPdo()->exec($sql2);
 
     }
 
