@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Weather;
 use Illuminate\Http\Request;
+use App\Temp;
 class BotController extends Controller
 {
 
@@ -19,32 +20,24 @@ class BotController extends Controller
 
                     $text = $event['message']['text'];
                     $replyToken = $event['replyToken'];
+
                     if (strpos($text, 'เหนื่อยไหม') !== false) {
                         $weathers = Weather::orderBy('id', 'desc')->first();
                         $image = $weathers['image'];
-                        header("Content-type: image/png");
-                        $imageDecode = base64_decode($image);
-                        $imageResize = $this->resize_image($imageDecode, 1024, 1024);
-                        $imageResize2 = $this->resize_image($imageDecode, 240, 240);
                         $messages1 = [
                             'type' => 'text',
                             'text' => 'ความชื้นของดิน : '.$weathers->soil_humidity.' %/ สภาพอากาศ : '.$weathers->weather.
                                 ' / ความกดอากาศ : '.$weathers->pressure.' pha / ความชื้นในอากาศ : '.$weathers->relative_humidity.' % / อุณหภูมิ : '.$weathers->temp.' C /',
                         ];
 
-                        $image1 = [
-                          'type' => 'image',
-                            'originalContentUrl' => 'data:image/image/png;base64,'.base64_encode($imageResize),
-                            'previewImageUrl' => 'data:image/image/png;base64,'.base64_encode($imageResize),
-                        ];
+
 
 
                         $data = [
                             'replyToken' => $replyToken,
                             'messages' =>[
                                 $messages1,
-                                $image1,
-                                ]
+                            ]
                         ];
                     }
                     /*elseif (strpos($text, 'รูปต้นไม้') !== false){
@@ -119,8 +112,10 @@ class BotController extends Controller
     }
 
 
-    public function base64_to_jpeg($base64_string, $output_file) {
+    function base64_to_jpeg($base64_string, $output_file) {
         $ifp = fopen($output_file, "rb");
+
+        $weathers = Weather::orderBy('id', 'desc')->first();
 
         $data = explode(',',$base64_string);
 
@@ -128,32 +123,5 @@ class BotController extends Controller
         fclose($ifp);
 
         return $output_file;
-    }
-
-    public function resize_image($file, $w, $h, $crop=FALSE) {
-        list($width, $height) = getimagesize($file);
-        $r = $width / $height;
-        if ($crop) {
-            if ($width > $height) {
-                $width = ceil($width-($width*abs($r-$w/$h)));
-            } else {
-                $height = ceil($height-($height*abs($r-$w/$h)));
-            }
-            $newwidth = $w;
-            $newheight = $h;
-        } else {
-            if ($w/$h > $r) {
-                $newwidth = $h*$r;
-                $newheight = $h;
-            } else {
-                $newheight = $w/$r;
-                $newwidth = $w;
-            }
-        }
-        $src = imagecreatefromjpeg($file);
-        $dst = imagecreatetruecolor($newwidth, $newheight);
-        imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-
-        return $dst;
     }
 }
