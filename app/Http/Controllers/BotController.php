@@ -21,7 +21,7 @@ class BotController extends Controller
                     $text = $event['message']['text'];
                     $replyToken = $event['replyToken'];
 
-                    if (strpos($text, 'เหนื่อยไหม') === true) {
+                    if (strpos($text, 'เหนื่อยไหม') !== false) {
                         $weather = Weather::orderBy('id', 'desc')->take(1)->get();
 
                         $messages1 = [
