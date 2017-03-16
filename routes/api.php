@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('bot', 'BotController@handleBot');
 
 Route::post('post_weather', 'WeatherController@getWeather');
+
+Route::post('post_durian', 'DurianDataController@getData');

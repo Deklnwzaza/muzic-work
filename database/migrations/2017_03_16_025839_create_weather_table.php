@@ -13,16 +13,16 @@ class CreateWeatherTable extends Migration
      */
     public function up()
     {
-        Schema::create('weathers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->float('temp');
-            $table->string('weather');
-            $table->float('pressure');
-            $table->string('relative_humidity');
-            $table->string('soil_humidity');
-            $table->MEDIUMTEXT('image');
-            $table->timestamps();
-        });
+//        Schema::create('weathers', function (Blueprint $table) {
+//            $table->increments('id');
+//            $table->float('temp');
+//            $table->string('weather');
+//            $table->float('pressure');
+//            $table->string('relative_humidity');
+//            $table->string('soil_humidity');
+//            $table->LONGTEXT('image');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -32,6 +32,6 @@ class CreateWeatherTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('weathers');
+//        Schema::dropIfExists('weathers');
     }
 }
