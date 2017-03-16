@@ -23,9 +23,9 @@ class CreateWeatherTable extends Migration
             $table->string('soil_humidity');
             $table->timestamps();
         });
-        $sql = 'ALTER TABLE weathers ADD pi_image MEDIUMBLOB';
+        $sql = 'ALTER TABLE weathers ADD pi_image LARGETEXT';
         DB::connection()->getPdo()->exec($sql);
-        $sql2 = 'ALTER TABLE weathers ADD matlab_image MEDIUMBLOB IS NULL';
+        $sql2 = 'ALTER TABLE weathers ADD matlab_image LARGETEXT IS NULL';
         DB::connection()->getPdo()->exec($sql2);
 
     }
