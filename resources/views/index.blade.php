@@ -31,7 +31,7 @@
             <td>{!! $weather->pressure !!} ph</td>
             <td>{!! $weather->relative_humidity !!} </td>
             <td>{!! $weather->soil_humidity !!} %</td>
-            <td>{!! $weatheer->pi_image !!} </td>
+            <td>{!! $weather->pi_image !!} </td>
         </tr>
 
     @endforeach
