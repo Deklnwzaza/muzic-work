@@ -28,10 +28,10 @@
         <tr>
             <td>{!! $weather->temp !!} C</td>
             <td>{!! $weather->weather !!} </td>
-            <td>{!! $weather->pressure !!} </td>
+            <td>{!! $weather->pressure !!} ph</td>
             <td>{!! $weather->relative_humidity !!} </td>
             <td>{!! $weather->soil_humidity !!} %</td>
-            <td>{!! base64_decode($weather->image) !!} </td>
+            <td>{!! $weather->image !!} </td>
         </tr>
 
     @endforeach
