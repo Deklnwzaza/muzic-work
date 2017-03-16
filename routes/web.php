@@ -32,3 +32,5 @@ Route::get('/temp_data', 'TempController@getTempData');
 Route::get('/daily_temp/{day}', 'TempController@getDailyWeatherData');
 
 Route::get('temp', 'TempController@index');
+
+Route::get('weather', 'WeatherController@index');

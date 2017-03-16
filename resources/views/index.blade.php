@@ -22,12 +22,12 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($temps as $temp)
+    @foreach($weathers as $weather)
         <tr>
-            <td>{!! $temp->Date !!}</td>
-            <td>{!! $temp->mean_temp !!} C</td>
-            <td>{!! $temp->max_temp !!} C</td>
-            <td>{!! $temp->min_temp !!} C</td>
+            <td>{!! $weather->id !!}</td>
+            <td>{!! $weather->temp !!} C</td>
+            <td>{!! $weather->pressure !!} C</td>
+            <td>{!! $weather->relative_humidity !!} C</td>
         </tr>
 
     @endforeach

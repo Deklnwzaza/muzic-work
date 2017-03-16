@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('bot', 'BotController@handleBot');
 
-Route::post('', 'BotController@handleBot');
+Route::post('post_weather', 'WeatherController@getWeather');
