@@ -31,6 +31,6 @@ class CreateWeatherForecastTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('weather_forecast');
+        Schema::dropIfExists('weather_forecasts');
     }
 }
