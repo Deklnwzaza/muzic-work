@@ -22,12 +22,11 @@ class BotController extends Controller
                     $replyToken = $event['replyToken'];
 
                     if (strpos($text, 'เหนื่อยไหม') !== false) {
-                        $weather = Weather::orderBy('id', 'desc')->take(1)->get();
+                        $weather = Weather::orderBy('id', 'desc')->first()->get();
 
                         $messages1 = [
                             'type' => 'text',
-                            'text' => 'ความชื้นของดิน : '.$weather->soil_humidity.' %/ สภาพอากาศ : '.$weather->weather.
-                                ' / ความกดอากาศ : '.$weather-pressure.' pha / ความชื้นในอากาศ : '.$weather->relative_humidity. ' % / อุณหภูมิ : '.$weather->temp.' C'
+                            'text' =>  '...'
                         ];
 
 
