@@ -19,7 +19,7 @@ class WeatherController extends Controller
     {
         $events = $request->all();
         $image = $events->file('image');
-        $cur = 'http://api.wunderground.com/api/2a042fddca7ac4ea/conditions/q/TH/Bangkok.json';
+        $cur = 'http://api.wunderground.com/api/2a042fddca7ac4ea/conditions/q/CA/San_Francisco.json';
         $data = self::curlGetRequest($cur);
         $arrData = [
             'temp' => $data['current_observation']['temp_c'],
@@ -46,7 +46,7 @@ class WeatherController extends Controller
 
         $img = Image::make($w->image)->resize(1024, 1024);
 
-        return response('jpg');
+        return $img->response('jpg');
     }
 
     public function getSmallImage($id)
@@ -55,7 +55,14 @@ class WeatherController extends Controller
 
         $img = Image::make($w->image)->resize(240, 240);
 
-        return response('jpg');
+        return $img->response('jpg');
+    }
+
+    public function getPiImage()
+    {
+        $w = Weather::orderBy('id', 'desc')->first();
+        return response($w->image)->header('Content-Type', 'image/jpg')
+            ->json(['id' => $w->id]);
     }
 
     public function curlGetRequest($url)

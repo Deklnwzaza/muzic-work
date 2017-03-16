@@ -13,12 +13,12 @@ class CreateDurianDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('durian_datas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('num');
-            $table->LONGTEXT('image');
-            $table->timestamps();
-        });
+//        Schema::create('durian_datas', function (Blueprint $table) {
+//            $table->increments('id');
+//            $table->string('num');
+//            $table->LONGTEXT('image');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -28,6 +28,6 @@ class CreateDurianDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('durian_datas');
+//        Schema::dropIfExists('durian_datas');
     }
 }

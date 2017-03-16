@@ -33,8 +33,8 @@ class BotController extends Controller
                         ];
                         $image1 = [
                             'type' => 'image',
-                            'originalContentUrl'=> 'https://muzic-work.herokuapp.com/api/image/m/'.$weathers['id'].'',
-                            'previewImageUrl' => 'https://muzic-work.herokuapp.com/api/image/s/'.$weathers['id'].'',
+                            'originalContentUrl'=> 'https://muzic-work.herokuapp.com/api/image/m/'.$weathers->id.'',
+                            'previewImageUrl' => 'https://muzic-work.herokuapp.com/api/image/s/'.$weathers->id.'',
                         ];
 
 

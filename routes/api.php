@@ -28,3 +28,5 @@ Route::get('/image/l/{id}', 'WeatherController@getImage');
 Route::get('/image/m/{id}', 'WeatherController@getMediumImage');
 
 Route::get('/image/s/{id}', 'WeatherController@getSmallImage');
+
+Route::get('get_pi_image', 'WeatherController@getPiImage');
