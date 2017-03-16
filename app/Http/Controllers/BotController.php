@@ -34,7 +34,7 @@ class BotController extends Controller
 
                         $data = [
                             'replyToken' => $replyToken,
-                            'messages' =>$messages1,
+                            'messages' =>"abc",
                         ];
                     }
                     /*elseif (strpos($text, 'รูปต้นไม้') !== false){
