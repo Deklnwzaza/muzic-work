@@ -22,8 +22,8 @@
         <tbody>
         @foreach($durians as $durian)
             <tr>
-                <td>{!! $durian->num !!} C</td>
-                <td>{!! $durian->image !!} C</td>
+                <td>{!! $durian->num !!} </td>
+                <td>{!! base64_decode($durian->image)!!} </td>
             </tr>
 
         @endforeach

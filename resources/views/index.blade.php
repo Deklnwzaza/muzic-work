@@ -27,11 +27,11 @@
     @foreach($weathers as $weather)
         <tr>
             <td>{!! $weather->temp !!} C</td>
-            <td>{!! $weather->weather !!} C</td>
-            <td>{!! $weather->pressure !!} C</td>
-            <td>{!! $weather->relative_humidity !!} C</td>
-            <td>{!! $weather->soil_humidity !!} C</td>
-            <td>{!! $weather->image !!} C</td>
+            <td>{!! $weather->weather !!} </td>
+            <td>{!! $weather->pressure !!} </td>
+            <td>{!! $weather->relative_humidity !!} </td>
+            <td>{!! $weather->soil_humidity !!} %</td>
+            <td>{!! $weather->image !!} </td>
         </tr>
 
     @endforeach
