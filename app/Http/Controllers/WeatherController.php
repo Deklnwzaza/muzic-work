@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-require 'vendor/autoload.php';
 
 use App\Weather;
 use Illuminate\Http\Request;
