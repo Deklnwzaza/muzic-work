@@ -15,7 +15,7 @@ class CreateDurianDataTable extends Migration
     {
         Schema::create('durian_datas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('num');
+            $table->string('num');
             $table->LONGTEXT('image');
             $table->timestamps();
         });
