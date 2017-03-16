@@ -22,7 +22,7 @@ class BotController extends Controller
                     if (strpos($text, 'เหนื่อยไหม') !== false) {
                         $weathers = Weather::orderBy('id', 'desc')->first();
                         $image = $weathers['image'];
-                        header("Content-type: image/jpeg");
+                        header("Content-type: image/png");
                         $imageDecode = base64_decode($image);
                         $imageResize = $this->resize_image($imageDecode, 1024, 1024);
                         $imageResize2 = $this->resize_image($imageDecode, 240, 240);
@@ -34,8 +34,8 @@ class BotController extends Controller
 
                         $image1 = [
                           'type' => 'image',
-                            'originalContentUrl' => $imageResize,
-                            'previewImageUrl' => $imageResize2,
+                            'originalContentUrl' => 'data:image/image/png;base64,'.base64_encode($imageResize),
+                            'previewImageUrl' => 'data:image/image/png;base64,'.base64_encode($imageResize),
                         ];
 
 
