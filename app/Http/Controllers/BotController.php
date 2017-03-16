@@ -26,10 +26,6 @@ class BotController extends Controller
 
                     if (strpos($text, 'เหนื่อยไหม') !== false) {
                         $weathers = Weather::orderBy('id', 'desc')->first();
-                        $image_path = $weathers['image'];
-                        $manager = new ImageManager(array('driver' => 'imagick'));
-                        $image1k = $manager->make($image_path)->resize(1024, 1024);
-                        $image200 = $manager->make($image_path)->resize(240, 240);
                         $messages1 = [
                             'type' => 'text',
                             'text' => 'ความชื้นของดิน : '.$weathers->soil_humidity.' %/ สภาพอากาศ : '.$weathers->weather.
@@ -37,8 +33,8 @@ class BotController extends Controller
                         ];
                         $image1 = [
                             'type' => 'image',
-                            'originalContentUrl'=> $image1k,
-                            'previewImageUrl' => $image200,
+                            'originalContentUrl'=> 'https://muzic-work.herokuapp.com/api/image/m/'.$weathers['id'].'',
+                            'previewImageUrl' => 'https://muzic-work.herokuapp.com/api/image/s/'.$weathers['id'].'',
                         ];
 
 

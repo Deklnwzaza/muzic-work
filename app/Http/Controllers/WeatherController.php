@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Weather;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManager;
 
 class WeatherController extends Controller
 {
@@ -16,19 +17,7 @@ class WeatherController extends Controller
     public function getWeather(Request $request)
     {
         $events = $request->all();
-        $ch = curl_init($events['image']);
-        for ($x = 0;; $x++) {
-            $file_path = 'public/image/pi'.$x.'.jpeg';
-            if(!fileExists($file_path)){
-                break;
-            }
-        }
-        $fp = fopen('public/image/pi'.$x.'.gif', 'wb');
-        curl_setopt($ch, CURLOPT_FILE, $fp);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_exec($ch);
-        curl_close($ch);
-        fclose($fp);
+        $image = $events->file('image');
         $cur = 'http://api.wunderground.com/api/2a042fddca7ac4ea/conditions/q/TH/Bangkok.json';
         $data = self::curlGetRequest($cur);
         $arrData = [
@@ -37,10 +26,35 @@ class WeatherController extends Controller
             'pressure' => $data['current_observation']['pressure_mb'],
             'relative_humidity' => $data['current_observation']['relative_humidity'],
             'soil_humidity' => $request['soil_humidity'],
-            'image' => $file_path
+            'image' => File::get($image)
         ];
-
         Weather::create($arrData);
+        return response()->json(['msg' => 'post complete']);
+    }
+
+    public function getImage($id)
+    {
+        $w = Weather::findOrFail($id);
+
+        return response($w->image)->header('Content-Type', 'image/jpg');
+    }
+
+    public function getMediumImage($id)
+    {
+        $w = Weather::findOrFail($id);
+
+        $img = Image::make($w->image)->resize(1024, 1024);
+
+        return response('jpg');
+    }
+
+    public function getSmallImage($id)
+    {
+        $w = Weather::findOrFail($id);
+
+        $img = Image::make($w->image)->resize(240, 240);
+
+        return response('jpg');
     }
 
     public function curlGetRequest($url)

@@ -22,3 +22,9 @@ Route::post('bot', 'BotController@handleBot');
 Route::post('post_weather', 'WeatherController@getWeather');
 
 Route::post('post_durian', 'DurianDataController@getData');
+
+Route::get('/image/l/{id}', 'WeatherController@getImage');
+
+Route::get('/image/m/{id}', 'WeatherController@getMediumImage');
+
+Route::get('/image/s/{id}', 'WeatherController@getSmallImage');
