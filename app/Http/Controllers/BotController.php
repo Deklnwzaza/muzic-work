@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Weather;
 use Illuminate\Http\Request;
-use App\Temp;
-use Intervention\Image\ImageManager;
 
-require 'vendor/autoload.php';
 class BotController extends Controller
 {
 
