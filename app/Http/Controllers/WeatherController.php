@@ -22,6 +22,7 @@ class WeatherController extends Controller
         $data = self::curlGetRequest($cur);
         $binary = pg_escape_bytea($image);
         $base64 = base64_encode($image);
+        File::get($binary);
         $arrData = [
             'temp' => $data['current_observation']['temp_c'],
             'weather' => $data['current_observation']['weather'],
