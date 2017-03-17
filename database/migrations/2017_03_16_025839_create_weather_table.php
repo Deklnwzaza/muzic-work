@@ -23,7 +23,7 @@ class CreateWeatherTable extends Migration
             $table->string('soil_humidity');
             $table->longText('pi_image');
             //$table->longText('matlab_image');
-            
+
             $table->timestamps();
         });
 
