@@ -21,7 +21,7 @@ class WeatherController extends Controller
         $cur = 'http://api.wunderground.com/api/2a042fddca7ac4ea/conditions/q/TH/Nonthaburi.json';
         $data = self::curlGetRequest($cur);
         $binary = pg_escape_bytea($image);
-        $base64 = base64_encode($image);
+        $base64 = base64_encode($binary);
         File::get($binary);
         $arrData = [
             'temp' => $data['current_observation']['temp_c'],
@@ -29,7 +29,7 @@ class WeatherController extends Controller
             'pressure' => $data['current_observation']['pressure_mb'],
             'relative_humidity' => $data['current_observation']['relative_humidity'],
             'soil_humidity' => $request['soil_humidity'],
-            'pi_image' => $binary,
+            'pi_image' => $base64,
         ];
         Weather::create($arrData);
         return response()->json(['msg' => 'post complete']);
