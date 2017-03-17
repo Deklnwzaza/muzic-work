@@ -13,11 +13,11 @@ class CreateMathlabTable extends Migration
      */
     public function up()
     {
-        Schema::create('mathlabs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->longText('matlab_image');
-            $table->timestamps();
-        });
+//        Schema::create('mathlabs', function (Blueprint $table) {
+//            $table->increments('id');
+//            $table->longText('matlab_image');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -27,6 +27,6 @@ class CreateMathlabTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mathlabs');
+//        Schema::dropIfExists('mathlabs');
     }
 }

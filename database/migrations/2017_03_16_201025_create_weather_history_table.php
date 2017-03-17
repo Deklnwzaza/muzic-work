@@ -13,14 +13,14 @@ class CreateWeatherHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('weather_historys', function (Blueprint $table) {
-            $table->increments('id');
-            $table->float('mean_temp');
-            $table->float('max_temp');
-            $table->float('min_temp');
-            $table->string('Date');
-            $table->timestamps();
-        });
+//        Schema::create('weather_historys', function (Blueprint $table) {
+//            $table->increments('id');
+//            $table->float('mean_temp');
+//            $table->float('max_temp');
+//            $table->float('min_temp');
+//            $table->string('Date');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateWeatherHistoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('weather_historys');
+//        Schema::dropIfExists('weather_historys');
     }
 }
