@@ -39,7 +39,7 @@ class WeatherController extends Controller
     {
         $w = Weather::findOrFail($id);
 
-        return response($w->image)->header('Content-Type', 'image/jpg');
+        return response(Image::make($w->image)->header('Content-Type', 'image/jpg'));
     }
 
     public function getMediumImage($id)
