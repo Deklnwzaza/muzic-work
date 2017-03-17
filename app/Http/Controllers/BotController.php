@@ -28,11 +28,11 @@ class BotController extends Controller
                             'text' => 'ความชื้นของดิน : '.$weathers->soil_humidity.' %/ สภาพอากาศ : '.$weathers->weather.
                                 ' / ความกดอากาศ : '.$weathers->pressure.' pha / ความชื้นในอากาศ : '.$weathers->relative_humidity.' % / อุณหภูมิ : '.$weathers->temp.' C /',
                         ];
-                       /* $image1 = [
+                        $image1 = [
                             'type' => 'image',
                             'originalContentUrl'=> 'https://muzic-work.herokuapp.com/api/image/m/'.$weathers->id.'',
                             'previewImageUrl' => 'https://muzic-work.herokuapp.com/api/image/s/'.$weathers->id.'',
-                        ];*/
+                        ];
 
 
 
@@ -40,7 +40,7 @@ class BotController extends Controller
                             'replyToken' => $replyToken,
                             'messages' =>[
                                 $messages1,
-                                //$image1
+                                $image1,
                             ]
                         ];
                     }
