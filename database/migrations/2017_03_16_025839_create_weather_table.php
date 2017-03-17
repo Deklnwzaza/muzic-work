@@ -21,8 +21,9 @@ class CreateWeatherTable extends Migration
             $table->float('pressure');
             $table->string('relative_humidity');
             $table->string('soil_humidity');
-            $table->longText('pi_image');
+            $table->bytea('pi_image');
             //$table->longText('matlab_image');
+
             $table->timestamps();
         });
 
