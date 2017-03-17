@@ -17,17 +17,16 @@ class WeatherController extends Controller
     public function getWeather(Request $request)
     {
         $events = $request->all();
-       // $image = $request->file('pi_image');
-        $cur = 'http://api.wunderground.com/api/2a042fddca7ac4ea/conditions/q/CA/San_Francisco.json';
+        $image = $request->file('pi_image');
+        $cur = 'http://api.wunderground.com/api/2a042fddca7ac4ea/conditions/q/TH/Nonthaburi.json';
         $data = self::curlGetRequest($cur);
-        $pi_img = 'data:image/jpeg;base64,'.base64_decode($request['pi_image']);
         $arrData = [
             'temp' => $data['current_observation']['temp_c'],
             'weather' => $data['current_observation']['weather'],
             'pressure' => $data['current_observation']['pressure_mb'],
             'relative_humidity' => $data['current_observation']['relative_humidity'],
             'soil_humidity' => $request['soil_humidity'],
-            'pi_image' => $pi_img
+            'pi_image' => File::get($image),
         ];
         Weather::create($arrData);
         return response()->json(['msg' => 'post complete']);

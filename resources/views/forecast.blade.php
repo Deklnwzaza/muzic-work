@@ -28,8 +28,8 @@
                 <td>{!! $weather_forecast->conditions !!} C</td>
                 <td>{!! $weather_forecast->max_temp !!} </td>
                 <td>{!! $weather_forecast->min_temp !!} ph</td>
-                <td>{!! $weather_forecast->Date-Time !!} </td>
-                <td>{!! $weather->ave_humidity !!} %</td>
+                <td>{!! $weather_forecast->Date_Time !!} </td>
+                <td>{!! $weather_forecast->ave_humidity !!} %</td>
             </tr>
 
         @endforeach

@@ -18,7 +18,7 @@ class CreateWeatherForecastTable extends Migration
             $table->string('conditions');
             $table->float('max_temp');
             $table->float('min_temp');
-            $table->string('Date-Time');
+            $table->string('Date_Time');
             $table->float('ave_humidity');
             $table->timestamps();
         });

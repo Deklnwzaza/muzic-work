@@ -17,7 +17,7 @@ class WeatherHistoryController extends Controller
     {
         $index = 0;
         for($i = 12; $i < 17; ++$i){
-            $days[index] = 'http://api.wunderground.com/api/2a042fddca7ac4ea/history_201703'.$i.'/q/TH/BANGKOK.json';
+            $days[$index] = 'http://api.wunderground.com/api/2a042fddca7ac4ea/history_201703'.$i.'/q/TH/Nonthaburi.json';
             $index++;
         }
 

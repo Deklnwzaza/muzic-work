@@ -10,24 +10,25 @@ class WeatherForecastController extends Controller
     public function index()
     {
         $weathers_forecasts = WeatherForecast::all();
-        return view('history', ['weathers_forecasts' => $weathers_forecasts]);    }
+        return view('forecast', ['weathers_forecasts' => $weathers_forecasts]);    }
 
     public function getForecastData()
     {
-        $day = 'http://api.wunderground.com/api/2a042fddca7ac4ea/forecast10day/q/TH/BANGKOK.json';
-        $index = 0;
-        $data = self::curlGetRequest($day);
-        foreach ($day['forecast']['simpleforecast']['forecastday'] as $day){
-            if(day['date']['day'] >= 18 && day['date']['day'] < 23){
+        $days = 'http://api.wunderground.com/api/2a042fddca7ac4ea/forecast10day/q/TH/Nonthaburi.json';
+        $data = self::curlGetRequest($days);
+        $forecastDays = $data['forecast']['simpleforecast']['forecastday'];
+        foreach ($forecastDays as $forecastDay){
+            if($forecastDay['date']['day'] >= 18 && $forecastDay['date']['day'] < 23){
                 $arrData = [
-                    'conditions'=> $data['conditions'],
-                    'max_temp'=> $data['high']['celsius'],
-                    'min_temp'=> $data['low']['celsius'],
-                    'Date-Time'=> $data['date']['pretty'],
-                    'ave_humidity' => $data['ave_humidity']
+                    'conditions'=> $forecastDay['conditions'],
+                    'max_temp'=> $forecastDay['high']['celsius'],
+                    'min_temp'=> $forecastDay['low']['celsius'],
+                    'Date_Time'=> $forecastDay['date']['pretty'],
+                    'ave_humidity' => $forecastDay['avehumidity']
                 ];
+                WeatherForecast::create($arrData);
             }
-            WeatherHistory::create($arrData);
+
         }
 
     }
