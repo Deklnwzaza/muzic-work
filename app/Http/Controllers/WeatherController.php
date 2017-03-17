@@ -29,7 +29,7 @@ class WeatherController extends Controller
             'pressure' => $data['current_observation']['pressure_mb'],
             'relative_humidity' => $data['current_observation']['relative_humidity'],
             'soil_humidity' => $request['soil_humidity'],
-            'pi_image' => File::get($image),
+            'pi_image' => $base64,
         ];
         Weather::create($arrData);
         return response()->json(['msg' => 'post complete']);
@@ -39,7 +39,7 @@ class WeatherController extends Controller
     {
         $w = Weather::findOrFail($id);
 
-        return response(Image::make($w->image)->header('Content-Type', 'image/jpg'));
+        return response($w->image)->header('Content-Type', 'image/jpg');
     }
 
     public function getMediumImage($id)
