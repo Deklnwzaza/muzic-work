@@ -13,16 +13,15 @@ class CreateWeatherForecastTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('weather_forecasts');
-//        Schema::create('weather_forecasts', function (Blueprint $table) {
-//            $table->increments('id');
-//            $table->string('conditions');
-//            $table->float('max_temp');
-//            $table->float('min_temp');
-//            $table->string('Date_Time');
-//            $table->float('ave_humidity');
-//            $table->timestamps();
-//        });
+        Schema::create('weather_forecasts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('conditions');
+            $table->float('max_temp');
+            $table->float('min_temp');
+            $table->string('Date_Time');
+            $table->float('ave_humidity');
+            $table->timestamps();
+        });
     }
 
     /**
