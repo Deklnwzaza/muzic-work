@@ -26,7 +26,7 @@ class CreateWeatherTable extends Migration
 
             $table->timestamps();
         });
-        $sql = 'ALTER TABLE `weathers` ADD `pi_image` BLOB';
+        $sql = 'ALTER TABLE `weathers` ADD `pi_image` Bytea';
         DB::connection()->getPdo()->exec($sql);
     }
 
