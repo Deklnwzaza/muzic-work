@@ -7,7 +7,13 @@ use Illuminate\Http\Request;
 
 class WeatherHistoryController extends Controller
 {
-    public function getTempData()
+
+    public function index()
+    {
+        $weathers_historys = WeatherHistory::all();
+        return view('history', ['weathers_historys' => $weathers_historys]);    }
+
+    public function getHistoryData()
     {
         $index = 0;
         for($i = 12; $i < 17; ++$i){

@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\WeatherForecast;
 use Illuminate\Http\Request;
 
 class WeatherForecastController extends Controller
 {
+    public function index()
+    {
+        $weathers_forecasts = WeatherForecast::all();
+        return view('history', ['weathers_forecasts' => $weathers_forecasts]);    }
+
     public function getForecastData()
     {
         $day = 'http://api.wunderground.com/api/2a042fddca7ac4ea/forecast10day/q/TH/BANGKOK.json';

@@ -39,3 +39,10 @@ Route::get('durian', 'DurianDataController@index');
 
 Route::get('/daily_temp/{day}', 'TempController@getDailyWeatherData');
 
+Route::get('set_history', 'WeatherHistoryController@getHistoryData');
+
+Route::get('set_forecast', 'WeatherForecastController@getForecastData');
+
+Route::get('history', 'WeatherHistoryController@index');
+
+Route::get('forecast', 'WeatherForecastController@index');
