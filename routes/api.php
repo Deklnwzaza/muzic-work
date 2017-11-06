@@ -31,7 +31,7 @@ Route::get('/image/s/{id}', 'WeatherController@getSmallImage');
 
 Route::get('get_pi_image', 'WeatherController@getPiImage');
 
-Route::get('data', function (Request $request ){
+Route::post('data', function (Request $request ){
     $data = $request->all();
     if($data->username == 'nnnew'){
         return response("Done");
