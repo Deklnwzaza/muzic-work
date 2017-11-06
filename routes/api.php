@@ -33,8 +33,8 @@ Route::get('get_pi_image', 'WeatherController@getPiImage');
 
 Route::post('data', function (Request $request ){
     $data = $request->all();
-    if($data['username'] == 'nnnew'){
-        return response("Done");
+    if($data['keyword'] == 'Awesome'){
+        return response("Awesome");
     }
     else{
         return response("Try Again Bro");
