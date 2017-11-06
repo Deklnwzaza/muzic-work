@@ -30,3 +30,7 @@ Route::get('/image/m/{id}', 'WeatherController@getMediumImage');
 Route::get('/image/s/{id}', 'WeatherController@getSmallImage');
 
 Route::get('get_pi_image', 'WeatherController@getPiImage');
+
+Route::get('data', function (){
+    return response()->json(['message'=> 'Hello My Friend']);
+});
