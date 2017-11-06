@@ -31,6 +31,13 @@ Route::get('/image/s/{id}', 'WeatherController@getSmallImage');
 
 Route::get('get_pi_image', 'WeatherController@getPiImage');
 
-Route::get('data', function (){
-    return response()->json(['message'=> 'Hello My Friend']);
+Route::get('data', function (Request $request ){
+    $data = $request->all();
+    if($data->username == 'nnnew'){
+        return response("Done");
+    }
+    else{
+        return response("Try Again Bro");
+    }
+
 });
